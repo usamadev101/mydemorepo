@@ -15,4 +15,4 @@ jobs:
         run: |
           gh pr create --base main --head staging --title "Merge Staging to Main" --body "Auto-generated PR to merge staging into main"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}

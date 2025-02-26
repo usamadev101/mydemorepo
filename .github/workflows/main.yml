@@ -1,0 +1,25 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Staging
+        run: |
+          echo "Deploying to Rocket.net Staging Server..."
+          # Add your deployment script or API calls here
+
+      - name: Trigger Production PR Workflow
+        run: |
+          gh workflow run create-production-pr.yml -r main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
